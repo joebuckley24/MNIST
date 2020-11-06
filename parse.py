@@ -57,6 +57,7 @@ def parse_images(images_path):
 	return images
 
 def main():
+
 	train_labels_path = 'data/train-labels-idx1-ubyte.gz'
 	test_labels_path = 'data/t10k-labels-idx1-ubyte.gz'
 	train_labels = parse_labels(train_labels_path)
