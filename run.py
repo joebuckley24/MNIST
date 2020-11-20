@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from download import data_exists, download
 from parse import parse_labels, parse_images
 from render import browse
+from preprocess import process_images, process_labels
 
 DATA_FOLDER_NAME = "data"
 URL_BASE = "http://yann.lecun.com/exdb/mnist/"
@@ -14,17 +15,6 @@ FILES = {
 	"train_images": "train-images-idx3-ubyte.gz", 
 	"test_images": "t10k-images-idx3-ubyte.gz"
 }
-
-def process_images(data):
-	"""images: flatten all but 0th dim, rescale to [0,1]
-	"""
-	data.shape = (data.shape[0], -1)
-	return data/255
-
-def process_labels(labels):
-	"""labels: cast int to string of len 1
-	"""
-	return labels.astype("<U1", copy=False)
 
 def plot_coefficients(model):
 	fig, axes = plt.subplots(4, 4)
